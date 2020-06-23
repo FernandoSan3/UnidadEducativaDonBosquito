@@ -165,7 +165,31 @@ public class ControladorEstudiante extends ControladorPersona {
         return listarEstudiante;
     }
     
-    
+     public void eliminarUsuario(Estudiante estudiante, Docente docente, Representante representante, Persona persona) {
+        sql = "DELETE FROM \"edu_estudiantes\" WHERE fk_per_codigo=?";
+        Conexion.coneccion();
+        try {
+            preSta = Conexion.getCon().prepareStatement(sql);
+            preSta.setInt(1, estudiante.getCodigoPersona());
+            preSta.executeUpdate();
+            preSta.close();
+            Conexion.desconectar();
+        } catch (SQLException e) {
+            System.out.println("Error al eliminar al Estudiante " + e.getMessage());
+        }
+
+        sql1 = "DELETE FROM \"edu_personas\" WHERE per_codigo=?";
+        Conexion.coneccion();
+        try {
+            preSta = Conexion.getCon().prepareStatement(sql1);
+            preSta.setInt(1, persona.getCodigoPersona());
+            preSta.executeUpdate();
+            preSta.close();
+            Conexion.desconectar();
+        } catch (SQLException e) {
+            System.out.println("Error al eliminar a la Persona" + e.getMessage());
+        }
+    }
 
     public static java.util.Date ParseFecha(String fecha) {
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
@@ -177,10 +201,4 @@ public class ControladorEstudiante extends ControladorPersona {
         }
         return fechaDate;
     }
-
-    @Override
-    public void eliminarUsuario(Estudiante estudiante, Docente docente, Representante representante, Persona persona) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
 }
