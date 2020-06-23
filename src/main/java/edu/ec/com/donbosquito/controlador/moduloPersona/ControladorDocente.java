@@ -18,27 +18,31 @@ import java.sql.SQLException;
  *
  * @author Bryam
  */
-public class ControladorDocente   {
+public class ControladorDocente extends ControladorPersona {
 
     private PreparedStatement preSta;
     private ResultSet res;
     private String sql;
+    private String sql1;
 
-    public void crearUsuario(Estudiante estudiante, Representante representante, Docente docente, Persona persona) {
-        sql = "INSERT INTO \"edu_docentes\" VALUES (?,?,?)";
-        Conexion.coneccion();
-        try {
-            preSta = Conexion.getCon().prepareStatement(sql);
-            preSta.setInt(1, docente.getCodigoDocente());
-            preSta.setString(2, docente.getTituloDocente());
-            preSta.setInt(3, persona.getCodigoPersona());
+    @Override
+    public void crearUsuario(Estudiante estudiante, Docente docente, Representante representante, Persona persona) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
-            preSta.execute();
-            preSta.close();
-            Conexion.desconectar();
-        } catch (SQLException e) {
-            System.out.println("Error al guardar al Docente " + e.getMessage());
-        }
+    @Override
+    public Object buscarUsuario(int codigo) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void modificarUsuario(Estudiante estudiante, Docente docente, Representante representante, Persona persona) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void eliminarUsuario(Estudiante estudiante, Docente docente, Representante representante, Persona persona) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
