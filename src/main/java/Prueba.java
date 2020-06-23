@@ -49,12 +49,22 @@ public class Prueba {
         representante.setParentescoFamiliar("Tia");
         representante.setPersona(representante);
         cr.modificarUsuario(estudiante, docente, representante, persona);
-              
-        Iterator iter = cr.listarUsuario().iterator();
-        while (iter.hasNext()){
-            System.out.println(iter.next());
-        }/*
-
+         */
+        //Iterator iter = cr.listarUsuario().iterator();
+        //while (iter.hasNext()){
+        //    System.out.println(iter.next());
+        //}
+        /*
+        estudiante.setCodigoPersona(5);
+        persona.setCodigoPersona(5);
+        ce.eliminarUsuario(estudiante, docente, representante, persona);
+        */
+        
+        
+        
+        
+        
+        
         //System.out.println(cr.buscarCedulaRepresentante("0105885101"));        
         /*
         estudiante.setCodigoPersona(3);
@@ -76,10 +86,10 @@ public class Prueba {
         //System.out.println(ce.buscarUsuario(2));
         
         
-        Iterator iter = ce.listarUsuario().iterator();
-        while (iter.hasNext()){
-            System.out.println(iter.next());
-        }
+        //Iterator iter = ce.listarUsuario().iterator();
+        //while (iter.hasNext()){
+        //    System.out.println(iter.next());
+        //}
         /*
         estudiante.setCodigoPersona(3);
         estudiante.setCedula("0105885870");
