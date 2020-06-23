@@ -32,9 +32,11 @@ public class Prueba {
 
         ControladorRepresentante cr = new ControladorRepresentante();
         ControladorEstudiante ce = new ControladorEstudiante();
-        Docente docente = new Docente(0, "", 0, "", "", "", "", "", "");
+        
+        
         Persona persona = new Persona(0, "", "", "", "", "", "") {
         };
+        Docente docente = new Docente(0, "", persona, 0, "", "", "", "", "", "");
         Representante representante = new Representante(0, "", persona, 0, "", "", "", "", "", "");
         Estudiante estudiante = new Estudiante(0, ParseFecha("0/0/0"), 0, ParseFecha("0/0/0"), persona, representante, 0, "", "", "", "", "", "");
         /*

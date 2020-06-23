@@ -10,14 +10,16 @@ package edu.ec.com.donbosquito.modelo.moduloPersona;
  * @author Bryam
  */
 public class Docente extends Persona {
-    
+
     private int codigoDocente;
     private String tituloDocente;
+    private Persona persona;
 
-    public Docente(int codigoDocente, String tituloDocente, int coidgoPersona, String cedula, String nombre, String apellido, String direccion, String telefono, String correo) {
+    public Docente(int codigoDocente, String tituloDocente, Persona persona, int coidgoPersona, String cedula, String nombre, String apellido, String direccion, String telefono, String correo) {
         super(coidgoPersona, cedula, nombre, apellido, direccion, telefono, correo);
         this.codigoDocente = codigoDocente;
         this.tituloDocente = tituloDocente;
+        this.persona = persona;
     }
 
     public int getCodigoDocente() {
@@ -36,12 +38,20 @@ public class Docente extends Persona {
         this.tituloDocente = tituloDocente;
     }
 
+    public Persona getPersona() {
+        return persona;
+    }
+
+    public void setPersona(Persona persona) {
+        this.persona = persona;
+    }
+
     public int getCodigoPersona() {
         return codigoPersona;
     }
 
-    public void setCodigoPersona(int coidgoPersona) {
-        this.codigoPersona = coidgoPersona;
+    public void setCodigoPersona(int codigoPersona) {
+        this.codigoPersona = codigoPersona;
     }
 
     public String getCedula() {
@@ -94,7 +104,7 @@ public class Docente extends Persona {
 
     @Override
     public String toString() {
-        return "Docente{" + "codigoDocente=" + codigoDocente + ", tituloDocente=" + tituloDocente + '}';
+        return "Docente{" + "codigoDocente=" + codigoDocente + ", tituloDocente=" + tituloDocente + ", persona=" + persona + '}';
     }
-    
+
 }
