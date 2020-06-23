@@ -32,7 +32,7 @@ public class Prueba {
 
         ControladorRepresentante cr = new ControladorRepresentante();
         ControladorEstudiante ce = new ControladorEstudiante();
-        
+        ControladorDocente cd = new ControladorDocente();
         
         Persona persona = new Persona(0, "", "", "", "", "", "") {
         };
@@ -64,7 +64,17 @@ public class Prueba {
         
         //
         
-        
+        docente.setCodigoPersona(6);
+        docente.setCedula("0105885876");
+        docente.setNombre("Mariela");
+        docente.setApellido("Pinos");
+        docente.setDireccion("Cuenca");
+        docente.setTelefono("123456");
+        docente.setCorreo("olga@est.ups.edu.ec");
+        docente.setCodigoDocente(2);
+        docente.setTituloDocente("Ingles");
+        docente.setPersona(docente);
+        cd.crearUsuario(estudiante, docente, representante, persona);
         
         
         //System.out.println(cr.buscarCedulaRepresentante("0105885101"));        
