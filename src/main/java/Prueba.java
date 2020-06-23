@@ -49,11 +49,7 @@ public class Prueba {
         representante.setParentescoFamiliar("Tia");
         representante.setPersona(representante);
         cr.modificarUsuario(estudiante, docente, representante, persona);
-         
-        ///////////munfowsss
-        ////asassssmmmm
-        
-        
+              
         Iterator iter = cr.listarUsuario().iterator();
         while (iter.hasNext()){
             System.out.println(iter.next());
