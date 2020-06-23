@@ -51,7 +51,7 @@ public class Prueba {
         cr.modificarUsuario(estudiante, docente, representante, persona);
          
         ///////////munfo
-        ////asassss
+        ////asassssmmmm
         
         
         Iterator iter = cr.listarUsuario().iterator();
