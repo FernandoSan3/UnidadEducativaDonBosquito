@@ -50,7 +50,7 @@ public class Prueba {
         representante.setPersona(representante);
         cr.modificarUsuario(estudiante, docente, representante, persona);
          
-        ///////////munfo
+        ///////////munfowsss
         ////asassssmmmm
         
         
