@@ -81,7 +81,25 @@ public class Prueba {
         
         //System.out.println(ce.buscarCedulaEstudiante("0105885879"));
         
-        System.out.println(cd.buscarDocenteCedula("0105885876"));
+        //System.out.println(cd.buscarDocenteCedula("0105885876"));
+
+        /*       
+        docente.setCodigoPersona(6);
+        docente.setCedula("0105885102");
+        docente.setNombre(" Carolina");
+        docente.setApellido(" Suin");
+        docente.setDireccion("Jima");
+        docente.setTelefono("0969138544");
+        docente.setCorreo("anabel@outlook.es");
+        docente.setCodigoDocente(2);
+        docente.setTituloDocente("Educacion Fisica"); 
+        docente.setPersona(docente);
+        cd.modificarUsuario(estudiante, docente, representante, persona);
+        */
+        
+        //persona.setCodigoPersona(6);
+        //docente.setCodigoPersona(6);
+        //cd.eliminarUsuario(estudiante, docente, representante, persona);
         
         //System.out.println(cr.buscarCedulaRepresentante("0105885101"));        
         /*
@@ -112,7 +130,7 @@ public class Prueba {
         estudiante.setCodigoPersona(3);
         estudiante.setCedula("0105885870");
         estudiante.setNombre("Melisa");
-        estudiante.setApellido("Cedilo");
+        estudiante.setApellido("Cedilo Mia");
         estudiante.setDireccion("Cuenca");
         estudiante.setTelefono("0969138544");
         estudiante.setCorreo("meli@outlook.es");

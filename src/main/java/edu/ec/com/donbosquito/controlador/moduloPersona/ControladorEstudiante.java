@@ -119,9 +119,9 @@ public class ControladorEstudiante extends ControladorPersona {
         Conexion.coneccion();
         try {
             preSta = Conexion.getCon().prepareStatement(sql);
-            preSta.setDate(1, new Date (estudiante.getFechaNaciemiento().getTime()));
+            preSta.setDate(1, new Date(estudiante.getFechaNaciemiento().getTime()));
             preSta.setInt(2, estudiante.getEdad());
-            preSta.setDate(3, new Date (estudiante.getFechaInscripcion().getTime()));
+            preSta.setDate(3, new Date(estudiante.getFechaInscripcion().getTime()));
             preSta.setInt(4, estudiante.getPersona().getCodigoPersona());
             preSta.setInt(5, estudiante.getRepresentante().getCodigoRepresentante());
             preSta.setInt(6, estudiante.getCodigoEstudiante());
@@ -132,7 +132,7 @@ public class ControladorEstudiante extends ControladorPersona {
             System.out.println("Error al actualizar a Estudiante " + e.getMessage());
         }
     }
-    
+
     public List<Estudiante> listarUsuario() {
 
         List<Estudiante> listarEstudiante = new ArrayList<>();
@@ -164,7 +164,7 @@ public class ControladorEstudiante extends ControladorPersona {
         }
         return listarEstudiante;
     }
-    
+
     public Estudiante buscarCedulaEstudiante(String cedulaPersona) {
 
         Persona persona = new Persona(0, "", "", "", "", "", "") {
@@ -194,8 +194,8 @@ public class ControladorEstudiante extends ControladorPersona {
         }
         return estudiante;
     }
-    
-     public void eliminarUsuario(Estudiante estudiante, Docente docente, Representante representante, Persona persona) {
+
+    public void eliminarUsuario(Estudiante estudiante, Docente docente, Representante representante, Persona persona) {
         sql = "DELETE FROM \"edu_estudiantes\" WHERE fk_per_codigo=?";
         Conexion.coneccion();
         try {

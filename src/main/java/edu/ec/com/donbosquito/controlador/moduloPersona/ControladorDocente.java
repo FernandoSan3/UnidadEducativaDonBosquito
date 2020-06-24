@@ -82,8 +82,7 @@ public class ControladorDocente extends ControladorPersona {
         }
         return docente;
     }
-    
-    
+
     public Docente buscarDocenteCedula(String cedulaDocente) {
         Persona persona = new Persona(0, "", "", "", "", "", "") {
         };
@@ -108,14 +107,64 @@ public class ControladorDocente extends ControladorPersona {
         return docente;
     }
 
-    @Override
     public void modificarUsuario(Estudiante estudiante, Docente docente, Representante representante, Persona persona) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        sql1 = "UPDATE \"edu_personas\" SET per_cedula=? , per_nombre=?, per_apellido=?, per_direccion=? , per_telefono=? , per_correo=? WHERE per_codigo=?";
+        Conexion.coneccion();
+        try {
+            preSta = Conexion.getCon().prepareStatement(sql1);
+            preSta.setString(1, docente.getCedula());
+            preSta.setString(2, docente.getNombre());
+            preSta.setString(3, docente.getApellido());
+            preSta.setString(4, docente.getDireccion());
+            preSta.setString(5, docente.getTelefono());
+            preSta.setString(6, docente.getCorreo());
+            preSta.setInt(7, docente.getCodigoPersona());
+            preSta.execute();
+            preSta.close();
+            Conexion.desconectar();
+        } catch (SQLException e) {
+            System.out.println("Error al actualizar a la Persona" + e.getMessage());
+        }
+
+        sql = "UPDATE \"edu_docentes\" SET doce_titulo=?, fk_per_codigo=? WHERE doce_codigo=?";
+        Conexion.coneccion();
+        try {
+            preSta = Conexion.getCon().prepareStatement(sql);
+            preSta.setString(1, docente.getTituloDocente());
+            preSta.setInt(2, docente.getPersona().getCodigoPersona());
+            preSta.setInt(3, docente.getCodigoDocente());
+            preSta.execute();
+            preSta.close();
+            Conexion.desconectar();
+        } catch (SQLException e) {
+            System.out.println("Error al actualizar al Docente " + e.getMessage());
+        }
     }
 
-    @Override
     public void eliminarUsuario(Estudiante estudiante, Docente docente, Representante representante, Persona persona) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        sql = "DELETE FROM \"edu_docentes\" WHERE fk_per_codigo=?";
+        Conexion.coneccion();
+        try {
+            preSta = Conexion.getCon().prepareStatement(sql);
+            preSta.setInt(1, docente.getCodigoPersona());
+            preSta.executeUpdate();
+            preSta.close();
+            Conexion.desconectar();
+        } catch (SQLException e) {
+            System.out.println("Error al eliminar al Docente " + e.getMessage());
+        }
+
+        sql1 = "DELETE FROM \"edu_personas\" WHERE per_codigo=?";
+        Conexion.coneccion();
+        try {
+            preSta = Conexion.getCon().prepareStatement(sql1);
+            preSta.setInt(1, persona.getCodigoPersona());
+            preSta.executeUpdate();
+            preSta.close();
+            Conexion.desconectar();
+        } catch (SQLException e) {
+            System.out.println("Error al eliminar a la Persona" + e.getMessage());
+        }
     }
 
 }
