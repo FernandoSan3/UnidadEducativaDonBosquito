@@ -29,4 +29,5 @@ public abstract class ControladorPersona {
     public abstract void modificarUsuario(Estudiante estudiante, Docente docente, Representante representante, Persona persona);
 
     public abstract void eliminarUsuario(Estudiante estudiante, Docente docente, Representante representante, Persona persona);
+
 }

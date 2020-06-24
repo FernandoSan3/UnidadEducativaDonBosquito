@@ -101,6 +101,9 @@ public class Prueba {
         //docente.setCodigoPersona(6);
         //cd.eliminarUsuario(estudiante, docente, representante, persona);
         
+        
+        
+        
         //System.out.println(cr.buscarCedulaRepresentante("0105885101"));        
         /*
         estudiante.setCodigoPersona(3);
