@@ -59,9 +59,53 @@ public class ControladorDocente extends ControladorPersona {
         }
     }
 
-    @Override
-    public Object buscarUsuario(int codigo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Object buscarUsuario(int codigoDocente) {
+        Persona persona = new Persona(0, "", "", "", "", "", "") {
+        };
+        Docente docente = new Docente(0, sql, persona, 0, "", "", "", "", "", "");
+        sql1 = "SELECT * FROM \"edu_docentes\" WHERE doce_codigo=?";
+        Conexion.coneccion();
+        try {
+            ControPersona cp = new ControPersona();
+            preSta = Conexion.getCon().prepareStatement(sql1);
+            preSta.setInt(1, codigoDocente);
+            res = preSta.executeQuery();
+            res.next();
+            docente.setCodigoDocente(res.getInt("doce_codigo"));
+            docente.setTituloDocente(res.getString("doce_titulo"));
+            docente.setPersona(cp.buscarPersona(res.getInt("fk_per_codigo")));
+            preSta.execute();
+            preSta.close();
+            Conexion.desconectar();
+        } catch (SQLException e) {
+            System.out.println("Erro al buscar al Docente por el codigo " + e.getMessage());
+        }
+        return docente;
+    }
+    
+    
+    public Docente buscarDocenteCedula(String cedulaDocente) {
+        Persona persona = new Persona(0, "", "", "", "", "", "") {
+        };
+        Docente docente = new Docente(0, sql, persona, 0, "", "", "", "", "", "");
+        sql = "SELECT * FROM edu_personas p, edu_docentes d WHERE p.per_codigo = d.fk_per_codigo AND p.per_cedula=?";
+        Conexion.coneccion();
+        try {
+            ControPersona cp = new ControPersona();
+            preSta = Conexion.getCon().prepareStatement(sql);
+            preSta.setString(1, cedulaDocente);
+            res = preSta.executeQuery();
+            res.next();
+            docente.setCodigoDocente(res.getInt("doce_codigo"));
+            docente.setTituloDocente(res.getString("doce_titulo"));
+            docente.setPersona(cp.buscarPersona(res.getInt("fk_per_codigo")));
+            preSta.execute();
+            preSta.close();
+            Conexion.desconectar();
+        } catch (SQLException e) {
+            System.out.println("Erro al buscar al Docente por la cedula " + e.getMessage());
+        }
+        return docente;
     }
 
     @Override

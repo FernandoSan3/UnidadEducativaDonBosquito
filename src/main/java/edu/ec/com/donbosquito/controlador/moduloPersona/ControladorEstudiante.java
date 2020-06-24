@@ -165,6 +165,36 @@ public class ControladorEstudiante extends ControladorPersona {
         return listarEstudiante;
     }
     
+    public Estudiante buscarCedulaEstudiante(String cedulaPersona) {
+
+        Persona persona = new Persona(0, "", "", "", "", "", "") {
+        };
+        Representante representante = new Representante(0, "", persona, 0, "", "", "", "", "", "");
+        Estudiante estudiante = new Estudiante(0, ParseFecha("0/0/0"), 0, ParseFecha("0/0/0"), persona, representante, 0, "", "", "", "", "", "");
+        sql = "SELECT * FROM edu_personas p, edu_estudiantes e WHERE p.per_codigo = e.fk_per_codigo AND p.per_cedula=?";
+        Conexion.coneccion();
+        try {
+            ControladorRepresentante cr = new ControladorRepresentante();
+            ControPersona cp = new ControPersona();
+            preSta = Conexion.getCon().prepareStatement(sql);
+            preSta.setString(1, cedulaPersona);
+            res = preSta.executeQuery();
+            res.next();
+            estudiante.setCodigoEstudiante(res.getInt("est_codigo"));
+            estudiante.setFechaNaciemiento(res.getDate("est_fecha_nacimiento"));
+            estudiante.setEdad(res.getInt("est_edad"));
+            estudiante.setFechaInscripcion(res.getDate("est_fecha_inscripcion"));
+            estudiante.setPersona(cp.buscarPersona(res.getInt("fk_per_codigo")));
+            estudiante.setRepresentante((Representante) cr.buscarUsuario(res.getInt("fk_rep_codigo")));
+            preSta.execute();
+            preSta.close();
+            Conexion.desconectar();
+        } catch (SQLException e) {
+            System.out.println("Erro al buscar al Estudiante por la cédula " + e.getMessage());
+        }
+        return estudiante;
+    }
+    
      public void eliminarUsuario(Estudiante estudiante, Docente docente, Representante representante, Persona persona) {
         sql = "DELETE FROM \"edu_estudiantes\" WHERE fk_per_codigo=?";
         Conexion.coneccion();

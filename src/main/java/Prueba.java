@@ -63,7 +63,7 @@ public class Prueba {
         */
         
         //
-        
+        /*
         docente.setCodigoPersona(6);
         docente.setCedula("0105885876");
         docente.setNombre("Mariela");
@@ -75,7 +75,13 @@ public class Prueba {
         docente.setTituloDocente("Ingles");
         docente.setPersona(docente);
         cd.crearUsuario(estudiante, docente, representante, persona);
+        */
         
+        //System.out.println(cd.buscarUsuario(1));
+        
+        //System.out.println(ce.buscarCedulaEstudiante("0105885879"));
+        
+        System.out.println(cd.buscarDocenteCedula("0105885876"));
         
         //System.out.println(cr.buscarCedulaRepresentante("0105885101"));        
         /*
