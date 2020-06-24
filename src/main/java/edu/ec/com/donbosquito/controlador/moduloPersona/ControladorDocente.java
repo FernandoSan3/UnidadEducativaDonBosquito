@@ -13,6 +13,8 @@ import edu.ec.com.donbosquito.modelo.moduloPersona.Representante;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -167,4 +169,31 @@ public class ControladorDocente extends ControladorPersona {
         }
     }
 
+    public List<Docente> listarUsuario() {
+
+        List<Docente> listarDocente = new ArrayList<>();
+        sql1 = "SELECT * FROM \"edu_docentes\" ORDER BY doce_codigo ASC ";
+        Conexion.coneccion();
+        try {
+            preSta = Conexion.getCon().prepareStatement(sql1);
+            res = preSta.executeQuery();
+            while (res.next()) {
+                Persona persona = new Persona(0, "", "", "", "", "", "") {
+                };
+                Docente docente = new Docente(0, "", persona, 0, "", "", "", "", "", "");
+                ControPersona cp = new ControPersona();
+                docente.setCodigoDocente(res.getInt("doce_codigo"));
+                docente.setTituloDocente(res.getString("doce_titulo"));
+                docente.setPersona(cp.buscarPersona(res.getInt("fk_per_codigo")));
+                listarDocente.add(docente);
+            }
+            preSta.executeUpdate();
+            preSta.close();
+            Conexion.desconectar();
+        } catch (SQLException e) {
+            System.out.println("Erro al listar al Usuario " + e.getMessage());
+        }
+        return listarDocente;
+    }    
+    
 }

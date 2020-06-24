@@ -5,16 +5,10 @@
  */
 package edu.ec.com.donbosquito.controlador.moduloPersona;
 
-import edu.ec.com.donbosquito.conexion.Conexion;
 import edu.ec.com.donbosquito.modelo.moduloPersona.Docente;
 import edu.ec.com.donbosquito.modelo.moduloPersona.Estudiante;
 import edu.ec.com.donbosquito.modelo.moduloPersona.Persona;
 import edu.ec.com.donbosquito.modelo.moduloPersona.Representante;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *

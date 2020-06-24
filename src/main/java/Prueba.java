@@ -52,10 +52,10 @@ public class Prueba {
         representante.setPersona(representante);
         cr.modificarUsuario(estudiante, docente, representante, persona);
          */
-        //Iterator iter = cr.listarUsuario().iterator();
-        //while (iter.hasNext()){
-        //    System.out.println(iter.next());
-        //}
+        Iterator iter = cd.listarUsuario().iterator();
+        while (iter.hasNext()){
+            System.out.println(iter.next());
+        }
         /*
         estudiante.setCodigoPersona(5);
         persona.setCodigoPersona(5);
