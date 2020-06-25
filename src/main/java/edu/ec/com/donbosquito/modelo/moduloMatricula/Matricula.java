@@ -5,7 +5,9 @@
  */
 package edu.ec.com.donbosquito.modelo.moduloMatricula;
 
-import ModeloPersona.Persona;
+
+
+import edu.ec.com.donbosquito.modelo.moduloPersona.Estudiante;
 import java.util.Date;
 
 /**
@@ -16,16 +18,13 @@ public class Matricula {
     
     private int codigo;
     private Date fechaMatricula;
-    private GrupoCabecera grupoCabeveras;
-    private Persona estudiante;
-    private AnoLectivo anoLectivo;
+    //private GrupoCabecera grupoCabeveras;
+    private Estudiante estudiante;
 
-    public Matricula(int codigo, Date fechaMatricula, GrupoCabecera grupoCabeveras, Persona estudiante, AnoLectivo anoLectivo) {
+    public Matricula(int codigo, Date fechaMatricula, Estudiante estudiante) {
         this.codigo = codigo;
         this.fechaMatricula = fechaMatricula;
-        this.grupoCabeveras = grupoCabeveras;
         this.estudiante = estudiante;
-        this.anoLectivo = anoLectivo;
     }
 
     public int getCodigo() {
@@ -44,38 +43,17 @@ public class Matricula {
         this.fechaMatricula = fechaMatricula;
     }
 
-    public GrupoCabecera getGrupoCabeveras() {
-        return grupoCabeveras;
-    }
-
-    public void setGrupoCabeveras(GrupoCabecera grupoCabeveras) {
-        this.grupoCabeveras = grupoCabeveras;
-    }
-
-    public Persona getEstudiante() {
+    public Estudiante getEstudiante() {
         return estudiante;
     }
 
-    public void setEstudiante(Persona estudiante) {
+    public void setEstudiante(Estudiante estudiante) {
         this.estudiante = estudiante;
-    }
-
-    public AnoLectivo getAnoLectivo() {
-        return anoLectivo;
-    }
-
-    public void setAnoLectivo(AnoLectivo anoLectivo) {
-        this.anoLectivo = anoLectivo;
     }
 
     @Override
     public String toString() {
-        return "Matricula{" + "codigo=" + codigo + ", fechaMatricula=" + fechaMatricula + ", grupoCabeveras=" + grupoCabeveras + ", estudiante=" + estudiante + ", anoLectivo=" + anoLectivo + '}';
+        return "Matricula{" + "codigo=" + codigo + ", fechaMatricula=" + fechaMatricula + ", estudiante=" + estudiante + '}';
     }
-
-    
-    
-    
-    
     
 }

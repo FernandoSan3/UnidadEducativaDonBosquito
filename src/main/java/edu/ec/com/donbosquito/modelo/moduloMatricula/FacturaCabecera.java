@@ -5,8 +5,9 @@
  */
 package edu.ec.com.donbosquito.modelo.moduloMatricula;
 
-import ModeloFactura.FormaDePago;
-import ModeloPersona.Persona;
+
+import edu.ec.com.donbosquito.modelo.moduloFactura.FormasDePago;
+import edu.ec.com.donbosquito.modelo.moduloPersona.Representante;
 import java.util.Date;
 import java.util.List;
 
@@ -19,22 +20,23 @@ public class FacturaCabecera {
     private int codigo;
     private int numeroFacura;
     private Date fecha;
-    private Persona representante;
-    private FormaDePago formaDePago;
-    private List<GrupoCabecera> detalleGrupo;
+    private Representante representante;
+    private FormasDePago formarDePago;
+
+    //private List<GrupoCabecera> detalleGrupo;
     private double subtotal;
     private double total;
 
-    public FacturaCabecera(int codigo, int numeroFacura, Date fecha, Persona representante, FormaDePago formaDePago, List<GrupoCabecera> detalleGrupo, double subtotal, double total) {
+    public FacturaCabecera(int codigo, int numeroFacura, Date fecha, Representante representante, FormasDePago formarDePago, double subtotal, double total) {
         this.codigo = codigo;
         this.numeroFacura = numeroFacura;
         this.fecha = fecha;
         this.representante = representante;
-        this.formaDePago = formaDePago;
-        this.detalleGrupo = detalleGrupo;
+        this.formarDePago = formarDePago;
         this.subtotal = subtotal;
         this.total = total;
     }
+
     public int getCodigo() {
         return codigo;
     }
@@ -59,28 +61,20 @@ public class FacturaCabecera {
         this.fecha = fecha;
     }
 
-    public Persona getRepresentante() {
+    public Representante getRepresentante() {
         return representante;
     }
 
-    public void setRepresentante(Persona representante) {
+    public void setRepresentante(Representante representante) {
         this.representante = representante;
     }
 
-    public FormaDePago getFormaDePago() {
-        return formaDePago;
+    public FormasDePago getFormarDePago() {
+        return formarDePago;
     }
 
-    public void setFormaDePago(FormaDePago formaDePago) {
-        this.formaDePago = formaDePago;
-    }
-
-    public List<GrupoCabecera> getDetalleGrupo() {
-        return detalleGrupo;
-    }
-
-    public void setDetalleGrupo(List<GrupoCabecera> detalleGrupo) {
-        this.detalleGrupo = detalleGrupo;
+    public void setFormarDePago(FormasDePago formarDePago) {
+        this.formarDePago = formarDePago;
     }
 
     public double getSubtotal() {
@@ -101,9 +95,10 @@ public class FacturaCabecera {
 
     @Override
     public String toString() {
-        return "FacturaCabecera{" + "codigo=" + codigo + ", numeroFacura=" + numeroFacura + ", fecha=" + fecha + ", representante=" + representante + ", formaDePago=" + formaDePago + ", detalleGrupo=" + detalleGrupo + ", subtotal=" + subtotal + ", total=" + total + '}';
+        return "FacturaCabecera{" + "codigo=" + codigo + ", numeroFacura=" + numeroFacura + ", fecha=" + fecha + ", representante=" + representante + ", formarDePago=" + formarDePago + ", subtotal=" + subtotal + ", total=" + total + '}';
     }
 
+    
   
     
     
