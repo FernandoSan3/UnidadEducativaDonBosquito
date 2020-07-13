@@ -22,7 +22,6 @@ public class FacturaCabecera {
     private Date fecha;
     private Representante representante;
     private FormasDePago formarDePago;
-
     //private List<GrupoCabecera> detalleGrupo;
     private double subtotal;
     private double total;
@@ -98,9 +97,5 @@ public class FacturaCabecera {
         return "FacturaCabecera{" + "codigo=" + codigo + ", numeroFacura=" + numeroFacura + ", fecha=" + fecha + ", representante=" + representante + ", formarDePago=" + formarDePago + ", subtotal=" + subtotal + ", total=" + total + '}';
     }
 
-    
-  
-    
-    
     
 }
