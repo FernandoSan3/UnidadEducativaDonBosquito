@@ -39,7 +39,7 @@ public class Prueba {
         Docente docente = new Docente(0, "", persona, 0, "", "", "", "", "", "");
         Representante representante = new Representante(0, "", persona, 0, "", "", "", "", "", "");
         Estudiante estudiante = new Estudiante(0, ParseFecha("0/0/0"), 0, ParseFecha("0/0/0"), persona, representante, 0, "", "", "", "", "", "");
-        /*
+        /*//////
         representante.setCodigoPersona(1);
         representante.setCedula("0105885101");
         representante.setNombre("Anable Carolina");
