@@ -84,6 +84,8 @@ public class ControladorDocente extends ControladorPersona {
         }
         return docente;
     }
+    
+    
 
     public Docente buscarDocenteCedula(String cedulaDocente) {
         Persona persona = new Persona(0, "", "", "", "", "", "") {
