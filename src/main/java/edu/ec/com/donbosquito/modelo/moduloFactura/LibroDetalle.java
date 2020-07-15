@@ -15,11 +15,27 @@ public class LibroDetalle {
     
     private int codigo;
     private Date fecha;
-    private TipoDePago valores;
     private String detalle;
     private double debe;
     private double haber;
+    private LibroDiario libroDiario;
+    private Pago pago;
 
+    public LibroDetalle(int codigo, Date fecha, String detalle, double debe, double haber, LibroDiario libroDiario, Pago pago) {
+        this.codigo = codigo;
+        this.fecha = fecha;
+        this.detalle = detalle;
+        this.debe = debe;
+        this.haber = haber;
+        this.libroDiario = libroDiario;
+        this.pago = pago;
+    }
+
+    public LibroDetalle() {
+    }
+
+    
+    
     public int getCodigo() {
         return codigo;
     }
@@ -34,14 +50,6 @@ public class LibroDetalle {
 
     public void setFecha(Date fecha) {
         this.fecha = fecha;
-    }
-
-    public TipoDePago getValores() {
-        return valores;
-    }
-
-    public void setValores(TipoDePago valores) {
-        this.valores = valores;
     }
 
     public String getDetalle() {
@@ -67,6 +75,25 @@ public class LibroDetalle {
     public void setHaber(double haber) {
         this.haber = haber;
     }
-    
-    
+
+    public LibroDiario getLibroDiario() {
+        return libroDiario;
+    }
+
+    public void setLibroDiario(LibroDiario libroDiario) {
+        this.libroDiario = libroDiario;
+    }
+
+    public Pago getPago() {
+        return pago;
+    }
+
+    public void setPago(Pago pago) {
+        this.pago = pago;
+    }
+
+    @Override
+    public String toString() {
+        return "LibroDetalle{" + "codigo=" + codigo + ", fecha=" + fecha + ", detalle=" + detalle + ", debe=" + debe + ", haber=" + haber + ", libroDiario=" + libroDiario + ", pago=" + pago + '}';
+    }
 }

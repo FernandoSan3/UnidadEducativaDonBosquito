@@ -7,7 +7,6 @@ package edu.ec.com.donbosquito.modelo.moduloFactura;
 
 import edu.ec.com.donbosquito.modelo.moduloMatricula.FacturaCabecera;
 
-
 /**
  *
  * @author alexCT
@@ -19,7 +18,17 @@ public class TipoDePago {
     private String tipoPago;
     private int numeroPago;
 
-    public int getCodigo() {
+    public TipoDePago(int codigo, FacturaCabecera facturaCabecera, String tipoPago, int numeroPago) {
+        this.codigo = codigo;
+        this.facturaCabecera = facturaCabecera;
+        this.tipoPago = tipoPago;
+        this.numeroPago = numeroPago;
+    }
+
+    public TipoDePago() {
+    }
+    
+      public int getCodigo() {
         return codigo;
     }
 
@@ -27,7 +36,7 @@ public class TipoDePago {
         this.codigo = codigo;
     }
 
-    public FacturaCabecera getFacturaCabecera() {
+   public FacturaCabecera getFacturaCabecera() {
         return facturaCabecera;
     }
 
@@ -51,4 +60,10 @@ public class TipoDePago {
         this.numeroPago = numeroPago;
     }
 
+    @Override
+    public String toString() {
+        return "TipoDePago{" + "codigo=" + codigo + ", facturaCabecera=" + facturaCabecera + ", tipoPago=" + tipoPago + ", numeroPago=" + numeroPago + '}';
+    }
+
+    
 }

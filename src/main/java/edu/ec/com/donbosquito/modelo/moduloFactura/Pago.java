@@ -18,9 +18,20 @@ public class Pago {
     private Date fecha;
     private String estado;
     private double valor;
-    private FormasDePago formaPago;
     private TipoDePago tipoPago;
 
+    public Pago(int codigo, Date fecha, String estado, double valor, TipoDePago tipoPago) {
+        this.codigo = codigo;
+        this.fecha = fecha;
+        this.estado = estado;
+        this.valor = valor;
+        this.tipoPago = tipoPago;
+    }
+
+    public Pago() {
+    }
+
+        
     public int getCodigo() {
         return codigo;
     }
@@ -53,14 +64,6 @@ public class Pago {
         this.valor = valor;
     }
 
-    public FormasDePago getFormaPago() {
-        return formaPago;
-    }
-
-    public void setFormaPago(FormasDePago formaPago) {
-        this.formaPago = formaPago;
-    }
-
     public TipoDePago getTipoPago() {
         return tipoPago;
     }
@@ -68,7 +71,10 @@ public class Pago {
     public void setTipoPago(TipoDePago tipoPago) {
         this.tipoPago = tipoPago;
     }
-    
-    
-        
+
+    @Override
+    public String toString() {
+        return "Pago{" + "codigo=" + codigo + ", fecha=" + fecha + ", estado=" + estado + ", valor=" + valor + ", tipoPago=" + tipoPago + '}';
+    }      
+   
 }
