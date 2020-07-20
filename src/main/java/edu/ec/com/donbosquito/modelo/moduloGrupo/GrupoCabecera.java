@@ -29,6 +29,10 @@ public class GrupoCabecera {
         this.mension = mension;
     }
 
+    public GrupoCabecera(int i, String string, String string0, String string1, Curso curso, AnioLectivo anioLectivo, Mension mension) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public int getCodigo() {
         return codigo;
     }

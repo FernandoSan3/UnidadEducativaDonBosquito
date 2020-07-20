@@ -7,6 +7,7 @@ package edu.ec.com.donbosquito.modelo.moduloMatricula;
 
 
 
+import edu.ec.com.donbosquito.modelo.moduloGrupo.GrupoCabecera;
 import edu.ec.com.donbosquito.modelo.moduloPersona.Estudiante;
 import java.util.Date;
 
@@ -18,13 +19,14 @@ public class Matricula {
     
     private int codigo;
     private Date fechaMatricula;
-    //private GrupoCabecera grupoCabeveras;
     private Estudiante estudiante;
+    private GrupoCabecera grupoCabecera;
 
-    public Matricula(int codigo, Date fechaMatricula, Estudiante estudiante) {
+    public Matricula(int codigo, Date fechaMatricula, Estudiante estudiante, GrupoCabecera grupoCabecera) {
         this.codigo = codigo;
         this.fechaMatricula = fechaMatricula;
         this.estudiante = estudiante;
+        this.grupoCabecera = grupoCabecera;
     }
 
     public int getCodigo() {
@@ -51,9 +53,22 @@ public class Matricula {
         this.estudiante = estudiante;
     }
 
+    public GrupoCabecera getGrupoCabecera() {
+        return grupoCabecera;
+    }
+
+    public void setGrupoCabecera(GrupoCabecera grupoCabecera) {
+        this.grupoCabecera = grupoCabecera;
+    }
+
     @Override
     public String toString() {
-        return "Matricula{" + "codigo=" + codigo + ", fechaMatricula=" + fechaMatricula + ", estudiante=" + estudiante + '}';
+        return "Matricula{" + "codigo=" + codigo + ", fechaMatricula=" + fechaMatricula + ", estudiante=" + estudiante + ", grupoCabecera=" + grupoCabecera + '}';
     }
+   
+  
     
+   
+
+
 }

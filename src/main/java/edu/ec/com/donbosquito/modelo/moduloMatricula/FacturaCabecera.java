@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package edu.ec.com.donbosquito.modelo.moduloMatricula;
 
 
-import edu.ec.com.donbosquito.modelo.moduloFactura.FormasDePago;
 import edu.ec.com.donbosquito.modelo.moduloPersona.Representante;
 import java.util.Date;
-import java.util.List;
+
 
 /**
  *
@@ -18,22 +18,19 @@ import java.util.List;
 
 public class FacturaCabecera {
     private int codigo;
-    private int numeroFacura;
-    private Date fecha;
-    private Representante representante;
-    private FormasDePago formarDePago;
-    //private List<GrupoCabecera> detalleGrupo;
+    private int numeroFactura;
+    private Date fechaFacturaCabecera;
     private double subtotal;
     private double total;
+    private Representante representante;
 
-    public FacturaCabecera(int codigo, int numeroFacura, Date fecha, Representante representante, FormasDePago formarDePago, double subtotal, double total) {
+    public FacturaCabecera(int codigo, int numeroFactura, Date fechaFacturaCabecera, double subtotal, double total, Representante representante) {
         this.codigo = codigo;
-        this.numeroFacura = numeroFacura;
-        this.fecha = fecha;
-        this.representante = representante;
-        this.formarDePago = formarDePago;
+        this.numeroFactura = numeroFactura;
+        this.fechaFacturaCabecera = fechaFacturaCabecera;
         this.subtotal = subtotal;
         this.total = total;
+        this.representante = representante;
     }
 
     public int getCodigo() {
@@ -44,36 +41,20 @@ public class FacturaCabecera {
         this.codigo = codigo;
     }
 
-    public int getNumeroFacura() {
-        return numeroFacura;
+    public int getNumeroFactura() {
+        return numeroFactura;
     }
 
-    public void setNumeroFacura(int numeroFacura) {
-        this.numeroFacura = numeroFacura;
+    public void setNumeroFactura(int numeroFactura) {
+        this.numeroFactura = numeroFactura;
     }
 
-    public Date getFecha() {
-        return fecha;
+    public Date getFechaFacturaCabecera() {
+        return fechaFacturaCabecera;
     }
 
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
-    }
-
-    public Representante getRepresentante() {
-        return representante;
-    }
-
-    public void setRepresentante(Representante representante) {
-        this.representante = representante;
-    }
-
-    public FormasDePago getFormarDePago() {
-        return formarDePago;
-    }
-
-    public void setFormarDePago(FormasDePago formarDePago) {
-        this.formarDePago = formarDePago;
+    public void setFechaFacturaCabecera(Date fechaFacturaCabecera) {
+        this.fechaFacturaCabecera = fechaFacturaCabecera;
     }
 
     public double getSubtotal() {
@@ -92,10 +73,18 @@ public class FacturaCabecera {
         this.total = total;
     }
 
-    @Override
-    public String toString() {
-        return "FacturaCabecera{" + "codigo=" + codigo + ", numeroFacura=" + numeroFacura + ", fecha=" + fecha + ", representante=" + representante + ", formarDePago=" + formarDePago + ", subtotal=" + subtotal + ", total=" + total + '}';
+    public Representante getRepresentante() {
+        return representante;
     }
 
-    
+    public void setRepresentante(Representante representante) {
+        this.representante = representante;
+    }
+
+    @Override
+    public String toString() {
+        return "FacturaCabecera{" + "codigo=" + codigo + ", numeroFactura=" + numeroFactura + ", fechaFacturaCabecera=" + fechaFacturaCabecera + ", subtotal=" + subtotal + ", total=" + total + ", representante=" + representante + '}';
+    }
+
+
 }
