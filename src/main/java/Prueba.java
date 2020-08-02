@@ -61,7 +61,7 @@ public class Prueba {
         persona.setCodigoPersona(5);
         ce.eliminarUsuario(estudiante, docente, representante, persona);
         */
-        
+        //
         //
         /*
         docente.setCodigoPersona(6);
