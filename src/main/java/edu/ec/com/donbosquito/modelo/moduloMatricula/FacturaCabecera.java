@@ -33,6 +33,10 @@ public class FacturaCabecera {
         this.representante = representante;
     }
 
+    public FacturaCabecera() {
+    }
+
+
     public int getCodigo() {
         return codigo;
     }
@@ -86,5 +90,6 @@ public class FacturaCabecera {
         return "FacturaCabecera{" + "codigo=" + codigo + ", numeroFactura=" + numeroFactura + ", fechaFacturaCabecera=" + fechaFacturaCabecera + ", subtotal=" + subtotal + ", total=" + total + ", representante=" + representante + '}';
     }
 
+  
 
 }

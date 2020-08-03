@@ -10,6 +10,7 @@ import edu.ec.com.donbosquito.modelo.moduloPersona.Persona;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JTextField;
 
 /**
  *
@@ -47,5 +48,6 @@ public class ControPersona {
         }
         return persona;
     }
+
     
 }

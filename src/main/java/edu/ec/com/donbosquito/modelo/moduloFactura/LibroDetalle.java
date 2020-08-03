@@ -5,14 +5,14 @@
  */
 package edu.ec.com.donbosquito.modelo.moduloFactura;
 
-import java.sql.Date;
+import java.util.Date;
 
 /**
  *
  * @author alexCT
  */
 public class LibroDetalle {
-    
+
     private int codigo;
     private Date fecha;
     private String detalle;
@@ -34,8 +34,6 @@ public class LibroDetalle {
     public LibroDetalle() {
     }
 
-    
-    
     public int getCodigo() {
         return codigo;
     }

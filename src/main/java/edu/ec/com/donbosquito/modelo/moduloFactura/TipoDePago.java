@@ -64,6 +64,4 @@ public class TipoDePago {
     public String toString() {
         return "TipoDePago{" + "codigo=" + codigo + ", facturaCabecera=" + facturaCabecera + ", tipoPago=" + tipoPago + ", numeroPago=" + numeroPago + '}';
     }
-
-    
 }

@@ -5,7 +5,6 @@
  */
 package edu.ec.com.donbosquito.controlador.moduloFactura;
 
-
 import edu.ec.com.donbosquito.conexion.Conexion;
 import edu.ec.com.donbosquito.modelo.moduloFactura.LibroDiario;
 import java.sql.PreparedStatement;
@@ -68,7 +67,7 @@ public class ControladorLibroDiario {
     }
 
     public LibroDiario buscarLibroDia(int codigoLibroDiario) {
-        LibroDiario libroDiario =  new LibroDiario();
+        LibroDiario libroDiario = new LibroDiario();
         try {
             sql = "SELECT * FROM \"edu_libros_diarios\" WHERE ldia_codigo=?";
             Conexion.coneccion();
@@ -87,7 +86,7 @@ public class ControladorLibroDiario {
         }
         return libroDiario;
     }
-    
+
     public Object buscarLibroDiario(int codigoLibroDiario, LibroDiario libroDiario) {
 
         try {
@@ -108,7 +107,6 @@ public class ControladorLibroDiario {
         }
         return libroDiario;
     }
-    
 
     public void actualizarLibroDiario(LibroDiario libroDiario) {
 
@@ -162,5 +160,5 @@ public class ControladorLibroDiario {
         }
         return cod;
     }
-   
+
 }

@@ -5,18 +5,38 @@
  */
 package edu.ec.com.donbosquito.vista.principal;
 
+import edu.ec.com.donbosquito.controlador.moduloPersona.ControladorDocente;
+import edu.ec.com.donbosquito.controlador.moduloPersona.ControladorEstudiante;
+import edu.ec.com.donbosquito.controlador.moduloPersona.ControladorRepresentante;
+import edu.ec.com.donbosquito.vista.moduloPersona.DocenteVista;
+import edu.ec.com.donbosquito.vista.moduloPersona.EstudianteVista;
+import edu.ec.com.donbosquito.vista.moduloPersona.MenuRepresentante;
+
 /**
  *
  * @author Bryam
  */
 public class Escritorio extends javax.swing.JFrame {
 
+    private MenuRepresentante menuRepresentante;
+    private EstudianteVista estudianteVista;
+    private DocenteVista docenteVista;
+    
+    private ControladorRepresentante controladorRepresentante;
+    private ControladorDocente controladorDocente;
+    private ControladorEstudiante controladorEstudiante;
+    
+  
     /**
      * Creates new form Escritorio
      */
     public Escritorio() {
         initComponents();
         this.setExtendedState(MAXIMIZED_BOTH);
+        controladorDocente = new ControladorDocente();
+        controladorEstudiante = new  ControladorEstudiante();
+        controladorRepresentante = new ControladorRepresentante();
+        
     }
 
     /**
@@ -28,6 +48,7 @@ public class Escritorio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        escritorioJdp = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         personaJmbar = new javax.swing.JMenu();
         representanteJmitem = new javax.swing.JMenuItem();
@@ -58,6 +79,11 @@ public class Escritorio extends javax.swing.JFrame {
         personaJmbar.setText("Registro Persona");
 
         representanteJmitem.setText("Representante");
+        representanteJmitem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                representanteJmitemActionPerformed(evt);
+            }
+        });
         personaJmbar.add(representanteJmitem);
 
         estudianteJmitem.setText("Estudiante");
@@ -74,6 +100,11 @@ public class Escritorio extends javax.swing.JFrame {
         institucionJmenubar.add(anioJmenuitem);
 
         mencionanioJmenuitem.setText("Mencion");
+        mencionanioJmenuitem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mencionanioJmenuitemActionPerformed(evt);
+            }
+        });
         institucionJmenubar.add(mencionanioJmenuitem);
 
         materiaanioJmenuitem.setText("Materia");
@@ -100,6 +131,11 @@ public class Escritorio extends javax.swing.JFrame {
         facturaJmenubar.add(facturasJmenuitem);
 
         libroJmenuitem.setText("Libro Diario");
+        libroJmenuitem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                libroJmenuitemActionPerformed(evt);
+            }
+        });
         facturaJmenubar.add(libroJmenuitem);
 
         pagosJmenuitem.setText("Pagos");
@@ -138,14 +174,42 @@ public class Escritorio extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 985, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(escritorioJdp, javax.swing.GroupLayout.DEFAULT_SIZE, 985, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 484, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(escritorioJdp, javax.swing.GroupLayout.DEFAULT_SIZE, 484, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void representanteJmitemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_representanteJmitemActionPerformed
+        // TODO add your handling code here:
+        if (menuRepresentante != null) {
+            menuRepresentante.dispose();
+            menuRepresentante = new MenuRepresentante(controladorRepresentante);
+            escritorioJdp.add(menuRepresentante);
+            menuRepresentante.setVisible(true);
+        } else {
+            menuRepresentante = new MenuRepresentante(controladorRepresentante);
+            escritorioJdp.add(menuRepresentante);
+            menuRepresentante.setVisible(true);
+        }
+        
+    }//GEN-LAST:event_representanteJmitemActionPerformed
+
+    private void libroJmenuitemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_libroJmenuitemActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_libroJmenuitemActionPerformed
+
+    private void mencionanioJmenuitemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mencionanioJmenuitemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mencionanioJmenuitemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -189,6 +253,7 @@ public class Escritorio extends javax.swing.JFrame {
     private javax.swing.JMenuItem certificadosJmenuitem;
     private javax.swing.JMenuItem cursoanioJmenuitem;
     private javax.swing.JMenuItem docenteJmenuitem;
+    public static javax.swing.JDesktopPane escritorioJdp;
     private javax.swing.JMenuItem estudianteJmitem;
     private javax.swing.JMenu facturaJmenubar;
     private javax.swing.JMenuItem facturasJmenuitem;

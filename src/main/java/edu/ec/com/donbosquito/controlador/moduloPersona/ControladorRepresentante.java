@@ -44,16 +44,15 @@ public class ControladorRepresentante extends ControladorPersona {
             preSta.close();
             Conexion.desconectar();
         } catch (SQLException e) {
-            System.out.println("Error al guardar la Persona" + e.getMessage());
+            System.out.println("Error al guardar la Persona en Representante" + e.getMessage());
         }
 
-        sql2 = "INSERT INTO \"edu_representantes\" VALUES (?,?,?)";
+        sql2 = "INSERT INTO \"edu_representantes\"  (rep_par_familiar, fk_per_codigo ) VALUES (?,?)";
         Conexion.coneccion();
         try {
             preSta = Conexion.getCon().prepareStatement(sql2);
-            preSta.setInt(1, representante.getCodigoRepresentante());
-            preSta.setString(2, representante.getParentescoFamiliar());
-            preSta.setInt(3, representante.getPersona().getCodigoPersona());
+            preSta.setString(1, representante.getParentescoFamiliar());
+            preSta.setInt(2, representante.getCodigoPersona());
             preSta.execute();
             preSta.close();
             Conexion.desconectar();
@@ -62,11 +61,33 @@ public class ControladorRepresentante extends ControladorPersona {
         }
     }
 
-    public Object buscarUsuario(int codigoRepresentante) {
+    public int buscarCodigoMaxRepresentante() {
+        Persona persona = new Persona(0, "", "", "", "", "", "") {
+        };
+        int a = 0;
+        sql = "SELECT max(per_codigo) FROM \"edu_personas\"";
+        Conexion.coneccion();
+        try {
+            preSta = Conexion.getCon().prepareStatement(sql);
+            res = preSta.executeQuery();
+            res.next();
+            persona.setCodigoPersona(res.getInt("max"));
+            a = res.getInt("max") + 1;
+            preSta.execute();
+            preSta.close();
+            Conexion.desconectar();
+            return a;
+        } catch (SQLException e) {
+            System.out.println("Error al buscar el codigo de persona " + e.getMessage());
+        }
+        return a;
+    }
+
+    public Representante buscarUsuario(int codigoRepresentante) {
         Persona persona = new Persona(0, "", "", "", "", "", "") {
         };
         Representante representante = new Representante(0, "", persona, 0, "", "", "", "", "", "");
-        sql1 = "SELECT * FROM \"edu_representantes\" WHERE rep_codigo=?";
+        sql1 = "SELECT * FROM edu_personas p, edu_representantes r WHERE p.per_codigo = r.fk_per_codigo AND p.per_codigo=?";
         Conexion.coneccion();
         try {
             ControPersona cp = new ControPersona();
@@ -77,6 +98,44 @@ public class ControladorRepresentante extends ControladorPersona {
             representante.setCodigoRepresentante(res.getInt("rep_codigo"));
             representante.setParentescoFamiliar(res.getString("rep_par_familiar"));
             representante.setPersona(cp.buscarPersona(res.getInt("fk_per_codigo")));
+            representante.setCodigoPersona(res.getInt("per_codigo"));
+            representante.setCedula(res.getString("per_cedula"));
+            representante.setNombre(res.getString("per_nombre"));
+            representante.setApellido(res.getString("per_apellido"));
+            representante.setDireccion(res.getString("per_direccion"));
+            representante.setTelefono(res.getString("per_telefono"));
+            representante.setCorreo(res.getString("per_correo"));
+            preSta.execute();
+            preSta.close();
+            Conexion.desconectar();
+        } catch (SQLException e) {
+            System.out.println("Erro al buscar al Representante por el codigo " + e.getMessage());
+        }
+        return representante;
+    }
+    
+    public Representante buscarUsuarioRepresentante(int codigoRepresentante) {
+        Persona persona = new Persona(0, "", "", "", "", "", "") {
+        };
+        Representante representante = new Representante(0, "", persona, 0, "", "", "", "", "", "");
+        sql1 = "SELECT * FROM edu_personas p, edu_representantes r WHERE p.per_codigo = r.fk_per_codigo AND r.rep_codigo =?";
+        Conexion.coneccion();
+        try {
+            ControPersona cp = new ControPersona();
+            preSta = Conexion.getCon().prepareStatement(sql1);
+            preSta.setInt(1, codigoRepresentante);
+            res = preSta.executeQuery();
+            res.next();
+            representante.setCodigoRepresentante(res.getInt("rep_codigo"));
+            representante.setParentescoFamiliar(res.getString("rep_par_familiar"));
+            representante.setPersona(cp.buscarPersona(res.getInt("fk_per_codigo")));
+            representante.setCodigoPersona(res.getInt("per_codigo"));
+            representante.setCedula(res.getString("per_cedula"));
+            representante.setNombre(res.getString("per_nombre"));
+            representante.setApellido(res.getString("per_apellido"));
+            representante.setDireccion(res.getString("per_direccion"));
+            representante.setTelefono(res.getString("per_telefono"));
+            representante.setCorreo(res.getString("per_correo"));
             preSta.execute();
             preSta.close();
             Conexion.desconectar();
@@ -123,7 +182,7 @@ public class ControladorRepresentante extends ControladorPersona {
     public List<Representante> listarUsuario() {
 
         List<Representante> listarRepresentante = new ArrayList<>();
-        sql1 = "SELECT * FROM \"edu_representantes\" ORDER BY rep_codigo ASC ";
+        sql1 = "SELECT * FROM \"edu_personas\"  p , \"edu_representantes\" r WHERE r.fk_per_codigo= p.per_codigo  ORDER BY r.rep_codigo ASC";
         Conexion.coneccion();
         try {
             preSta = Conexion.getCon().prepareStatement(sql1);
@@ -136,6 +195,13 @@ public class ControladorRepresentante extends ControladorPersona {
                 representante.setCodigoRepresentante(res.getInt("rep_codigo"));
                 representante.setParentescoFamiliar(res.getString("rep_par_familiar"));
                 representante.setPersona(cp.buscarPersona(res.getInt("fk_per_codigo")));
+                representante.setCodigoPersona(res.getInt("per_codigo"));
+                representante.setCedula(res.getString("per_cedula"));
+                representante.setNombre(res.getString("per_nombre"));
+                representante.setApellido(res.getString("per_apellido"));
+                representante.setDireccion(res.getString("per_direccion"));
+                representante.setTelefono(res.getString("per_telefono"));
+                representante.setCorreo(res.getString("per_correo"));
                 listarRepresentante.add(representante);
             }
             preSta.executeUpdate();
@@ -163,6 +229,14 @@ public class ControladorRepresentante extends ControladorPersona {
             representante.setCodigoRepresentante(res.getInt("rep_codigo"));
             representante.setParentescoFamiliar(res.getString("rep_par_familiar"));
             representante.setPersona(cp.buscarPersona(res.getInt("fk_per_codigo")));
+            representante.setCodigoPersona(res.getInt("per_codigo"));
+            representante.setCedula(res.getString("per_cedula"));
+            representante.setNombre(res.getString("per_nombre"));
+            representante.setApellido(res.getString("per_apellido"));
+            representante.setDireccion(res.getString("per_direccion"));
+            representante.setTelefono(res.getString("per_telefono"));
+            representante.setCorreo(res.getString("per_correo"));
+
             preSta.execute();
             preSta.close();
             Conexion.desconectar();

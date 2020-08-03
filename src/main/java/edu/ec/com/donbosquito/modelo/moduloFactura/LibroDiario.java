@@ -18,16 +18,18 @@ public class LibroDiario {
     private String descripcion;
     private double debe;
     private double haber;
-   // private List<LibroDetalle> listLibroDetalle;
 
-    /*public LibroDiario(int codigo, String empresa, String descripcion, double debe, double haber) {
+   public LibroDiario(int codigo, String empresa, String descripcion, double debe, double haber) {
         this.codigo = codigo;
         this.empresa = empresa;
         this.descripcion = descripcion;
         this.debe = debe;
         this.haber = haber;
-    }*/
+    }
 
+    public LibroDiario() {
+    }
+  
     public int getCodigo() {
         return codigo;
     }
@@ -71,7 +73,5 @@ public class LibroDiario {
     @Override
     public String toString() {
         return "LibroDiario{" + "codigo=" + codigo + ", empresa=" + empresa + ", descripcion=" + descripcion + ", debe=" + debe + ", haber=" + haber + '}';
-    }
-
-    
+    }   
 }

@@ -5,18 +5,17 @@
  */
 package edu.ec.com.donbosquito.modelo.moduloMatricula;
 
-
-
 import edu.ec.com.donbosquito.modelo.moduloGrupo.GrupoCabecera;
 import edu.ec.com.donbosquito.modelo.moduloPersona.Estudiante;
 import java.util.Date;
+import javax.swing.JPanel;
 
 /**
  *
  * @author josepandiguana
  */
 public class Matricula {
-    
+
     private int codigo;
     private Date fechaMatricula;
     private Estudiante estudiante;
@@ -65,10 +64,8 @@ public class Matricula {
     public String toString() {
         return "Matricula{" + "codigo=" + codigo + ", fechaMatricula=" + fechaMatricula + ", estudiante=" + estudiante + ", grupoCabecera=" + grupoCabecera + '}';
     }
-   
-  
-    
-   
 
-
+    public void addTab(String eliminar, JPanel jPanel4) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

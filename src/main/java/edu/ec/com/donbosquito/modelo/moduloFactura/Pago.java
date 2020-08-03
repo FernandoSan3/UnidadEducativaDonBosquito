@@ -5,8 +5,7 @@
  */
 package edu.ec.com.donbosquito.modelo.moduloFactura;
 
-import java.sql.Date;
-
+import java.util.Date;
 
 /**
  *
@@ -18,20 +17,29 @@ public class Pago {
     private Date fecha;
     private String estado;
     private double valor;
+    private String formaPago;
     private TipoDePago tipoPago;
 
-    public Pago(int codigo, Date fecha, String estado, double valor, TipoDePago tipoPago) {
+    public Pago(int codigo, Date fecha, String estado, double valor, TipoDePago tipoPago, String formaPAgo) {
         this.codigo = codigo;
         this.fecha = fecha;
         this.estado = estado;
         this.valor = valor;
         this.tipoPago = tipoPago;
+        this.formaPago = formaPAgo;
     }
 
     public Pago() {
     }
 
-        
+    public String getFormaPago() {
+        return formaPago;
+    }
+
+    public void setFormaPago(String formaPago) {
+        this.formaPago = formaPago;
+    }
+
     public int getCodigo() {
         return codigo;
     }
@@ -75,6 +83,5 @@ public class Pago {
     @Override
     public String toString() {
         return "Pago{" + "codigo=" + codigo + ", fecha=" + fecha + ", estado=" + estado + ", valor=" + valor + ", tipoPago=" + tipoPago + '}';
-    }      
-   
+    }
 }

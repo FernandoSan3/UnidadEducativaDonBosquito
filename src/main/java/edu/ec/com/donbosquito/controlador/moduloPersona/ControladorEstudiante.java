@@ -49,22 +49,43 @@ public class ControladorEstudiante extends ControladorPersona {
             System.out.println("Error al guardar la Persona" + e.getMessage());
         }
 
-        sql1 = "INSERT INTO \"edu_estudiantes\" VALUES (?,?,?,?,?,?)";
+        sql1 = "INSERT INTO \"edu_estudiantes\" (est_fecha_nacimiento, est_edad, est_fecha_inscripcion, fk_per_codigo, fk_rep_codigo) VALUES (?,?,?,?,?)";
         Conexion.coneccion();
         try {
             preSta = Conexion.getCon().prepareStatement(sql1);
-            preSta.setInt(1, estudiante.getCodigoEstudiante());
-            preSta.setDate(2, new Date(estudiante.getFechaNaciemiento().getTime()));
-            preSta.setInt(3, estudiante.getEdad());
-            preSta.setDate(4, new Date(estudiante.getFechaInscripcion().getTime()));
-            preSta.setInt(5, estudiante.getPersona().getCodigoPersona());
-            preSta.setInt(6, estudiante.getRepresentante().getCodigoRepresentante());
+            preSta.setDate(1, new Date(estudiante.getFechaNaciemiento().getTime()));
+            preSta.setInt(2, estudiante.getEdad());
+            preSta.setDate(3, new Date(estudiante.getFechaInscripcion().getTime()));
+            preSta.setInt(4, estudiante.getPersona().getCodigoPersona());
+            preSta.setInt(5, estudiante.getRepresentante().getCodigoRepresentante());
             preSta.execute();
             preSta.close();
             Conexion.desconectar();
         } catch (SQLException e) {
             System.out.println("Error al guardar al Estudiante " + e.getMessage());
         }
+    }
+    
+    public int buscarCodigo() {
+        Persona persona = new Persona(0, "", "", "", "", "", "") {
+        };
+        int a = 0;
+        sql = "SELECT max(per_codigo) FROM \"edu_personas\"";
+        Conexion.coneccion();
+        try {
+            preSta = Conexion.getCon().prepareStatement(sql);
+            res = preSta.executeQuery();
+            res.next();
+            persona.setCodigoPersona(res.getInt("max"));
+            a = res.getInt("max") + 1;
+            preSta.execute();
+            preSta.close();
+            Conexion.desconectar();
+            return a;
+        } catch (SQLException e) {
+            System.out.println("Error al buscar el codigo de persona " + e.getMessage());
+        }
+        return a;
     }
 
     public Estudiante buscarUsuario(int codigoEstudiante) {
@@ -119,9 +140,12 @@ public class ControladorEstudiante extends ControladorPersona {
         Conexion.coneccion();
         try {
             preSta = Conexion.getCon().prepareStatement(sql);
+            System.out.println(estudiante.getFechaNaciemiento().getTime());
             preSta.setDate(1, new Date(estudiante.getFechaNaciemiento().getTime()));
+            System.out.println(estudiante.getEdad());
             preSta.setInt(2, estudiante.getEdad());
             preSta.setDate(3, new Date(estudiante.getFechaInscripcion().getTime()));
+            System.out.println(estudiante.getFechaInscripcion().getTime());
             preSta.setInt(4, estudiante.getPersona().getCodigoPersona());
             preSta.setInt(5, estudiante.getRepresentante().getCodigoRepresentante());
             preSta.setInt(6, estudiante.getCodigoEstudiante());
@@ -136,7 +160,7 @@ public class ControladorEstudiante extends ControladorPersona {
     public List<Estudiante> listarUsuario() {
 
         List<Estudiante> listarEstudiante = new ArrayList<>();
-        sql1 = "SELECT * FROM \"edu_estudiantes\" ORDER BY est_codigo ASC ";
+        sql1 = "SELECT * FROM edu_personas p , edu_estudiantes e WHERE e.fk_per_codigo= p.per_codigo  ORDER BY e.est_codigo ASC;";
         Conexion.coneccion();
         try {
             preSta = Conexion.getCon().prepareStatement(sql1);
@@ -153,7 +177,16 @@ public class ControladorEstudiante extends ControladorPersona {
                 estudiante.setEdad(res.getInt("est_edad"));
                 estudiante.setFechaInscripcion(res.getDate("est_fecha_inscripcion"));
                 estudiante.setPersona(cp.buscarPersona(res.getInt("fk_per_codigo")));
+                estudiante.setCodigoPersona(res.getInt("per_codigo"));
+                estudiante.setCedula(res.getString("per_cedula"));
+                estudiante.setNombre(res.getString("per_nombre"));
+                estudiante.setApellido(res.getString("per_apellido"));
+                estudiante.setDireccion(res.getString("per_direccion"));
+                estudiante.setTelefono(res.getString("per_telefono"));
+                estudiante.setCorreo(res.getString("per_correo"));
                 estudiante.setRepresentante((Representante) cr.buscarUsuario(res.getInt("fk_rep_codigo")));
+                
+                
                 listarEstudiante.add(estudiante);
             }
             preSta.executeUpdate();
@@ -185,7 +218,15 @@ public class ControladorEstudiante extends ControladorPersona {
             estudiante.setEdad(res.getInt("est_edad"));
             estudiante.setFechaInscripcion(res.getDate("est_fecha_inscripcion"));
             estudiante.setPersona(cp.buscarPersona(res.getInt("fk_per_codigo")));
-            estudiante.setRepresentante((Representante) cr.buscarUsuario(res.getInt("fk_rep_codigo")));
+            estudiante.setRepresentante((Representante) cr.buscarUsuarioRepresentante(res.getInt("fk_rep_codigo")));
+            estudiante.setCodigoPersona(res.getInt("per_codigo"));
+            estudiante.setCedula(res.getString("per_cedula"));
+            estudiante.setNombre(res.getString("per_nombre"));
+            estudiante.setApellido(res.getString("per_apellido"));
+            estudiante.setDireccion(res.getString("per_direccion"));
+            estudiante.setTelefono(res.getString("per_telefono"));
+            estudiante.setCorreo(res.getString("per_correo"));
+            
             preSta.execute();
             preSta.close();
             Conexion.desconectar();
